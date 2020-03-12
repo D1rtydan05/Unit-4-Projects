@@ -5,8 +5,8 @@
    Tutorial 11
    Case Problem 1
 
-   Author: 
-   Date:   
+   Author: Daniel Garcia
+   Date:   3-11-20
    
    Filename: bw_review.js
 	
@@ -34,14 +34,56 @@
 
 */
 
+window.onload = init;
+
+function init(){
+   var stars = document.getElementsByClassName("span#stars img");
+
+   for(var i = 0; i < stars.length; i++){
+      stars[i].style.cursor = "pointer"
+
+      stars[i].addEventListener("mouseenter", lightStars)
+   }
+
+   document.getElementById("commentField").addEventListener("keyup", updateCount);
+}
+
+function lightStars(e){
+   var starNumber = e.target.alt
+   var stars = document.getElementsByClassName("span#stars img");
+
+   for(var i = 0; i < stars.length; i++){
+      
+   }
+}
 
 
   
+  
+  
 
 
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*=================================================================*/
 
 function countCharacters(textStr) {

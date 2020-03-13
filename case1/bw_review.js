@@ -34,10 +34,12 @@
 
 */
 
+
+// This is not enjoyable
 window.onload = init;
 
 function init(){
-   var stars = document.getElementsByClassName("span#stars img");
+   var stars = document.querySelectorAll("span#stars img");
 
    for(var i = 0; i < stars.length; i++){
       stars[i].style.cursor = "pointer"
@@ -48,17 +50,60 @@ function init(){
    document.getElementById("commentField").addEventListener("keyup", updateCount);
 }
 
+//I have no idea what im doing
 function lightStars(e){
    var starNumber = e.target.alt
+   var stars = document.querySelectorAll("span#stars img");
+
+   for(var i = 0; i < stars.length; i++){
+      stars[i].src = "bw_star2.png";
+   }
+
+   for(var i = starNumber; i < 5; i++){
+      stars[i].src = "bw_star.png";
+   }
+
+   //bruh
+   document.getElementById("rating").value = starNumber + " stars"
+
+   e.target.addEventListener("mouseleave", turnOffStars)
+
+   e.target.addEventListener("click", 
+      function(){
+         e.target.removeEventListener("mouseleave", turnOffStars)
+      }
+   )
+}
+
+function turnOffStars(){   
+   //at least dis is easier
    var stars = document.getElementsByClassName("span#stars img");
 
    for(var i = 0; i < stars.length; i++){
-      
+      stars[i].src = "bw_star.png"
    }
+
+   document.getElementById("rating").value = ""
+
 }
 
+function updateCount(){
+   
+   var commentText = document.getElementById("comment").value;
+   var charCount = countCharacters(commentText);
+   var wordCountBox = document.getElementById("wordCount");
 
-  
+   wordCountBox.value = charCount + "/1000";
+   //this is too many words
+   if(charCount > 1000){
+      wordCountBox.style.backgroundColor = "red";
+      wordCountBox.style.color = "white";
+   }else{
+      wordCountBox.style.backgroundColor = "white";
+      wordCountBox.style.color = "black";
+   }
+
+}  
   
   
 
